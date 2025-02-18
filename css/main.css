@@ -142,7 +142,9 @@
   }
   
   img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
   
   figure {
@@ -162,7 +164,6 @@
   header {
     display: flex;
     justify-content: center;
-    padding: 15px 0;
     background-color: #202322;
   }
   
@@ -195,12 +196,27 @@
   header nav ul {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-  }
-  
-  header nav ul li {
+    justify-content: space-between; /* Changed to space-between */
+    align-items: center; /* Vertically align items */
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 10px; /* Add some horizontal spacing */
+}
+
+header nav a { /* Style the links */
+    color: #e2e3ed;
+    text-decoration: none;
     font-size: 1.125em;
-  }
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 10px; /* Add some padding around the text */
+}
+
+header nav a:hover { /* Add a hover effect */
+    color: #fff;
+}
   
   footer {
     display: flex;
@@ -256,6 +272,7 @@
     font-family: cursive;
     font-weight: 800;
     line-height: 1.2;
+    text-align: center;
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
   }
   
@@ -296,7 +313,7 @@
   /* Features */
   
   .features {
-    background: url('../img/unplugged-retreat-features.jpg');
+    background: url('../img/Shadows.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -558,6 +575,7 @@
       font-size: 3em;
       line-height: 1;
       margin: 0;
+      text-align: center;
     }
   
     /* Aside */
