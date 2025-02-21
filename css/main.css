@@ -149,6 +149,8 @@
   
   figure {
     margin: 0;
+    padding: 0;
+    display: block;
   }
   
   address {
@@ -313,9 +315,9 @@ header nav a:hover { /* Add a hover effect */
   /* Features */
   
   .features {
-    background: url('../img/Shadows.jpg');
+    background-image: url('../img/Shadows.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: top center; /* Align to top center */
     display: flex;
     justify-content: center;
   }
@@ -364,6 +366,7 @@ header nav a:hover { /* Add a hover effect */
     margin: 20px 0;
   }
   
+
   /* ==========================================================================
      About Page
      ========================================================================== */
@@ -593,7 +596,8 @@ header nav a:hover { /* Add a hover effect */
     }
   
     /* Features */
-  
+
+
     .features h2 {
       margin-bottom: 20px;
     }

@@ -36,8 +36,8 @@
       <nav>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Photos</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://www.amazon.com/wedding/registry/386BNPOG3OPRG">Registry</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
@@ -62,8 +62,7 @@
         </div>
         <div class="form">
           <h3>Find out more</h3>
-          <input type="text" name="name" value="name@email.com">
-          <input type="button" value="Download Itinerary">
+          <input type="button" id="downloadButton" value="Download Itinerary">
         </div>
       </div>
       <!-- aside content wrapper ends -->
@@ -130,7 +129,7 @@
         <h2>Be a better team in 5 days, like this one.</h2>
         <article>
           <figure>
-            <img src="img/unplugged-retreat-lacrue.jpg" alt="Group of happy people at an outdoor retreat.">
+            <img src="img/IMG_0398.JPG" alt="The happy couple in Singapore">
           </figure>
           <div>
             <h3>LaCrue Bottling Co. October 2018</h3>
@@ -203,6 +202,13 @@
     ga('send', 'pageview')
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+  <script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+      // Replace this with the actual URL of your itinerary file
+      var itineraryURL = 'path/to/your/itinerary.pdf';  
+      window.location.href = itineraryURL;
+    });
+  </script>
 </body>
 
 </html>
