@@ -166,7 +166,7 @@
   header {
     display: flex;
     justify-content: center;
-    background-color: #202322;
+    background-color: #d4bbdd;
   }
   
   header .content-wrapper {
@@ -208,7 +208,7 @@ header nav ul li {
 }
 
 header nav a { /* Style the links */
-    color: #e2e3ed;
+    color: #000000;
     text-decoration: none;
     font-size: 1.125em;
     font-weight: 700;

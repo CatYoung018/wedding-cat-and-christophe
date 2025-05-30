@@ -29,7 +29,7 @@
     <div class="content-wrapper">
       <figure>
         <a href="#">
-          <img src="img/unpluggedlogo.png" alt="unplugged logo">
+          <img src="img/wedding_flowers.png" alt="wedding logo">
         </a>
       </figure>
       <div class="header-divider"></div>
@@ -62,7 +62,7 @@
         </div>
         <div class="form">
           <h3>Find out more</h3>
-          <input type="button" id="downloadButton" value="Download Itinerary">
+          <input type="button" id="downloadButton" value="Download Itinerary" target="_blank">
         </div>
       </div>
       <!-- aside content wrapper ends -->
@@ -73,52 +73,18 @@
         <h2>Have the work week you always dreamed of — without the bad wifi.</h2>
         <div class="features-items">
           <article>
-            <p class="fontawesome-icon">
-              <i class="fas fa-campground"></i>
-            </p>
-            <p class="features-item-description">
-              Located in a peaceful bungalow outside of Lake Geneva, Wisconsin.
-            </p>
+            <p>My tech journey started with a degree in journalism. I loved
+              researching, writing, and sharing my voice online, but something
+              felt missing. I wished for a way to share and display information
+              exactly the way I wanted. That's when I discovered and fell in love
+              with coding and web design!</p>
           </article>
           <article>
-            <p class="fontawesome-icon">
-              <i class="fas fa-bed"></i>
-            </p>
-            <p class="features-item-description">
-              12 private rooms with ensuite bathrooms, 2 group meeting rooms, and 4 breakout rooms.
-            </p>
-          </article>
-          <article>
-            <p class="fontawesome-icon">
-              <i class="fas fa-utensils"></i>
-            </p>
-            <p class="features-item-description">
-              Private chef team providing on demand meals - just like your team kitchen.
-            </p>
-          </article>
-          <article>
-            <p class="fontawesome-icon">
-              <i class="fas fa-shoe-prints"></i>
-            </p>
-            <p class="features-item-description">
-              5 outdoor obstacle courses, including private beach ½ mile from bungalow.
-            </p>
-          </article>
-          <article>
-            <p class="fontawesome-icon">
-              <i class="fas fa-smile"></i>
-            </p>
-            <p class="features-item-description">
-              Retreat facilitator to manage your day to day activities so you all get a chance to reset.
-            </p>
-          </article>
-          <article>
-            <p class="fontawesome-icon">
-              <i class="fas fa-wifi"></i>
-            </p>
-            <p class="features-item-description">
-              Dedicated computer room for times that you must wifi.
-            </p>
+            <p>As a front end developer, I pride myself on writing code that's easy
+              to read and build upon while still looking great. My goal with every
+              site is to provide a top-of-the-line unser experience. Besides web
+              development, I enjoy gardening and spending time with my small
+              (but growing!) family.</p>
           </article>
         </div>
       </div>
@@ -129,7 +95,7 @@
         <h2>Be a better team in 5 days, like this one.</h2>
         <article>
           <figure>
-            <img src="img/IMG_0398.JPG" alt="The happy couple in Singapore">
+            <img src="img/Greece_sunset.jpeg" alt="Cat and Christophe - The happy couple in Greece">
           </figure>
           <div>
             <h3>LaCrue Bottling Co. October 2018</h3>
@@ -203,11 +169,12 @@
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
   <script>
-    document.getElementById('downloadButton').addEventListener('click', function() {
-      // Replace this with the actual URL of your itinerary file
-      var itineraryURL = 'path/to/your/itinerary.pdf';  
-      window.location.href = itineraryURL;
-    });
+document.getElementById('downloadButton').addEventListener('click', function() {
+  // Replace this with the actual URL of your itinerary file
+  var itineraryURL = 'downloads/Morning + Evening Routine Call Script.pdf';
+  window.open(itineraryURL, '_blank');
+});
+
   </script>
 </body>
 
