@@ -102,122 +102,135 @@
   html {
     font-size: 1rem;
   }
-  
+
   body {
     font-size: 1em;
-    font-family: 'Open Sans', sans-serif;
-    color: #f1f6f2;
+    font-family: 'Open Sans', sans-serif; /* Using Open Sans for the body */
+    color: #000000;
     text-align: left;
   }
-  
+
   ul,
   ol {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
-  
+
   a {
     color: #e2e3ed;
     text-decoration: none;
+    font-family: 'EB Garamond', serif; /* Using EB Garamond for links */
   }
-  
+
   h2 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'EB Garamond', serif; /* Using EB Garamond for h2 */
     font-weight: 500;
     font-size: 1.875em;
   }
-  
+
   h3,
   h4 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'EB Garamond', serif; /* Using EB Garamond for h3 and h4 */
     font-weight: 500;
     font-size: 1.125em;
     margin: 20px 0;
   }
-  
+
   p {
     font-size: .875em;
     line-height: 1.285;
   }
-  
+
   img {
     max-width: 100%;
     height: auto;
     display: block;
   }
-  
+
   figure {
     margin: 0;
     padding: 0;
     display: block;
   }
-  
+
   address {
     font-style: normal;
   }
-  
+
   .content-wrapper {
     width: 90%;
   }
-  
   /* -------------------- Base Header - Footer Styles -------------------- */
-  
-  header {
-    display: flex;
-    justify-content: center;
-    background-color: #d4bbdd;
-  }
-  
-  header .content-wrapper {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;
-  }
-  
-  header figure {
-    width: 60%;
-  }
-  
-  .header-divider {
-    background: #3a3a3a;
-    height: 1px;
-    width: 100%;
-    margin: 10px 0 20px 0;
-  }
-  
-  header nav {
-    width: 60%;
-    font-size: 1.125em;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-  
-  header nav ul {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Changed to space-between */
-    align-items: center; /* Vertically align items */
+header {
+  display: flex;
+  justify-content: center;
+  background-color: #d4bbdd;
+  padding-top: 20px; /* Add some top padding for spacing */
+  padding-bottom: 20px; /* Add some bottom padding for spacing */
+}
+
+header .content-wrapper {
+  margin: 0 auto; /* Center the content wrapper horizontally */
+  display: flex;
+  flex-direction: column; /* Stack the title and navigation vertically */
+  align-items: center; /* Center items horizontally within the wrapper */
+  width: 80%; /* Adjust width as needed */
+}
+
+.site-title {
+  width: 100%; /* Make the title take full width of the wrapper */
+  text-align: center; /* Center the text */
+  margin-bottom: 10px; /* Add some space below the title */
+  font-size: 3em; /* Adjust the font size as needed */
+}
+
+.site-title a {
+  text-decoration: none; /* Remove the underline from the link */
+  color: inherit; /* Inherit the color from the parent */
+}
+
+.header-divider {
+  background: #3a3a3a;
+  height: 1px;
+  width: 100%;
+  margin: 10px 0 20px 0;
+}
+
+header nav {
+  width: 100%; /* Make the navigation take full width */
+  font-size: 1.125em;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center; /* Center the navigation items */
+  align-items: center;
+  padding: 0; /* Remove default padding for the ul */
+  margin: 0; /* Remove default margin for the ul */
+  width: auto;
 }
 
 header nav ul li {
-    display: inline-block;
-    margin: 0 10px; /* Add some horizontal spacing */
+  display: inline; /* Display list items horizontally */
+  margin: 0 15px; /* Add horizontal spacing between items */
 }
 
-header nav a { /* Style the links */
-    color: #000000;
-    text-decoration: none;
-    font-size: 1.125em;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 5px 10px; /* Add some padding around the text */
+header nav a {
+  color: #000000;
+  text-decoration: none;
+  font-size: inherit; /* Inherit font size from the nav */
+  font-weight: inherit;
+  text-transform: inherit;
+  padding: 5px 10px;
 }
 
-header nav a:hover { /* Add a hover effect */
-    color: #fff;
+header nav a:hover {
+  color: #fff;
 }
   
   footer {
@@ -260,57 +273,35 @@ header nav a:hover { /* Add a hover effect */
   
   /* Hero Area */
   
-  .hero-area {
-    background: url(../img/IMG_1111.JPG);
-    background-size: cover;
-    background-position: center;
-    min-height: 500px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .hero-area h1 {
-    font-size: 2.25em;
-    font-family: cursive;
-    font-weight: 800;
-    line-height: 1.2;
-    text-align: center;
-    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
-  }
-  
-  /* Aside */
-  
-  aside {
-    background-color: #202322;
-    display: flex;
-    justify-content: center;
-  }
-  
-  aside .form {
-    margin-top: 30px;
-  }
-  
-  input[type=text] {
-    box-sizing: border-box;
-    width: 100%;
-    color: #2a423a;
-    font-style: italic;
-    padding: 1em;
-  }
-  
-  input[type=button] {
-    width: 100%;
-    padding: 20px 0;
-    margin-top: 20px;
-    background-color: #2a423a;
-    font-family: 'Poppins', Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 1.125em;
-    color: #e2e3ed;
-    border: none;
-    text-align: center;
-    text-transform: uppercase;
-  }
+.hero-area {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  min-height: auto; /* Adjust height to content */
+  padding: 20px; /* Add some padding around the content */
+  background-color: #f9f9f9; /* Optional background color for the section */
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-area img {
+  display: block;
+  max-width: 100%; /* Make the image responsive */
+  height: auto;
+  margin: 20px auto; /* Center the image horizontally with some top/bottom margin */
+}
+
+.hero-area h1 {
+  font-size: 2em; /* Adjust as needed */
+  font-family: 'EB Garamond', serif; /* Assuming you want to use this font */
+  font-weight: 500; /* Adjust as needed */
+  line-height: 1.3;
+  color: #333; /* Adjust text color as needed */
+  text-shadow: none; /* Remove text shadow if it was there */
+  margin-bottom: 10px; /* Add some space between text and image */
+}
   
   /* Features */
   
@@ -581,20 +572,6 @@ header nav a:hover { /* Add a hover effect */
       text-align: center;
     }
   
-    /* Aside */
-    aside .content-wrapper {
-      margin: 50px 0;
-      display: flex;
-      justify-content: space-between;
-      align-content: flex-start;
-    }
-  
-    aside .content-wrapper .form-description,
-    aside .content-wrapper .form {
-      width: 40%;
-      margin: 0;
-    }
-  
     /* Features */
 
 
@@ -748,20 +725,6 @@ header nav a:hover { /* Add a hover effect */
     .hero-area h1 {
       font-size: 3.75em;
       width: 80%;
-    }
-  
-    /* Aside */
-    aside .content-wrapper {
-      justify-content: space-around;
-    }
-  
-    aside .content-wrapper .form-description,
-    aside .content-wrapper .form {
-      width: 40%;
-    }
-  
-    .form-description p {
-      font-size: 1.125em;
     }
   
     /* Features */
