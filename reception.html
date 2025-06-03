@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Reception Details - Cat & Christophe Wedding</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Open+Sans:wght@400;700&display=swap">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <header>
+    <div class="content-wrapper">
+      <h1 class="site-title"><a href="index.html">Cat & Christophe 2025</a></h1>
+      <div class="header-divider"></div>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="reception.html">Reception</a></li>
+    <li><a href="https://www.amazon.com/wedding/registry/386BNPOG3OPRG">Registry</a></li>
+    <li><a href="#">RSVP</a></li>
+  </ul>
+</nav>
+    </div>
+  </header>
+
+<main class="main-content">
+<section class="countdown-section">
+  <div class="content-wrapper">
+    <div class="countdown-header">
+      <h2>Countdown Calendar</h2>
+      <p class="wedding-date">Saturday, August 30, 2025</p>
+    </div>
+    <div id="countdown">
+      <div class="time-segment">
+        <span id="months"></span>
+        <span class="unit">Months</span>
+      </div>
+      <div class="time-segment">
+        <span id="weeks"></span>
+        <span class="unit">Weeks</span>
+      </div>
+      <div class="time-segment">
+        <span id="days"></span>
+        <span class="unit">Days</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="reception-cover">
+    <div class="cover-content">
+      <h2>Reception Details</h2>
+    </div>
+  </section>
+
+<section class="gifts-section">
+  <div class="gifts-content-wrapper">
+    <h2>Your Presence is the Only Gift</h2>
+    <p>Please <a href="#">RSVP</a> by Friday, August 8, 2025 so we can finalize our arrangements.</p>
+    <p>The only gifts we truly need are your presence. What a blessing it is to have you celebrate with us! Gifts are not required. If you would still like to contribute, you can check out our <a href="https://www.amazon.com/wedding/registry/386BNPOG3OPRG" target="_blank" rel="noopener noreferrer">wedding registry</a>.</p>
+  </div>
+</section>
+</main>
+
+  <footer>
+    <div class="content-wrapper">
+      <section class="contact">
+        <h3>We Can't Wait To Celebrate With You!</h3>
+        <address>
+          </address>
+      </section>
+      <section class="social-icons">
+        </section>
+      <section class="copyright">
+        <p>&copy; Cat & Christophe 2025</p>
+      </section>
+    </div>
+  </footer>
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+function updateCountdown() {
+  const weddingDate = new Date('2025-08-30T00:00:00'); // August is 08, set time to midnight
+  const now = new Date().getTime();
+  const difference = weddingDate - now;
+
+  const totalDays = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const months = Math.floor(totalDays / 30.44); // Average days in a month
+  const remainingDaysAfterMonths = totalDays % 30.44;
+  const weeks = Math.floor(remainingDaysAfterMonths / 7);
+  const days = Math.floor(remainingDaysAfterMonths % 7);
+
+  document.getElementById('months').textContent = months;
+  document.getElementById('weeks').textContent = weeks;
+  document.getElementById('days').textContent = days;
+
+  if (difference < 0) {
+    clearInterval(countdownInterval);
+    document.getElementById('countdown').textContent = 'We Did It!';
+  }
+}
+
+const countdownInterval = setInterval(updateCountdown, 1000);
+</script>
+
+  <script>
+    window.ga = function() { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('set', 'anonymizeIp', true);
+    ga('set', 'transport', 'beacon');
+    ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>

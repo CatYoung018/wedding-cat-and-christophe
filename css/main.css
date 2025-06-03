@@ -107,7 +107,7 @@
     font-size: 1em;
     font-family: 'Open Sans', sans-serif; /* Using Open Sans for the body */
     color: #000000;
-    text-align: left;
+    text-align: justify;
   }
 
   ul,
@@ -132,7 +132,7 @@
   h3,
   h4 {
     font-family: 'EB Garamond', serif; /* Using EB Garamond for h3 and h4 */
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.125em;
     margin: 20px 0;
   }
@@ -238,7 +238,7 @@ header nav a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: #202322;
+    background-color: #f8f8f8;
   }
   
   footer p {
@@ -248,25 +248,54 @@ header nav a:hover {
   footer .content-wrapper {
     width: 55%;
   }
+
+  footer .content-wrapper .footer-content {
+  display: flex;
+  justify-content: center; /* Center the direct children horizontally */
+  align-items: center; /* Vertically align items if needed */
+  flex-direction: column; /* Stack the contact and (if it existed) social divs */
+  text-align: center; /* Center text within the children */
+}
+
+footer .contact {
+  /* Remove width and margin auto that we previously set */
+  margin-bottom: 30px; /* Keep the bottom margin */
+}
+
+footer .contact h4 {
+  text-align: center; /* Center the text within the heading */
+  display: block; /* Ensure it's a block-level element */
+  width: fit-content; /* Make the width fit its content */
+  max-width: 100%; /* Prevent it from becoming wider than its container */
+  margin: 0 auto 10px auto; /* Center the heading horizontally and add bottom margin */
+}
+
+footer .contact p {
+  text-align: center; /* Center the text within the paragraph */
+  display: block; /* Ensure it's a block-level element */
+  max-width: 600px; /* Limit the width for readability */
+  margin: 0 auto 20px auto; /* Center the paragraph horizontally and add bottom margin */
+}
   
-  footer .contact {
-    margin-bottom: 50px;
-  }
-  
-  footer .social-icons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  footer .social-icons p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+footer .contact a {
+  color: inherit; /* Inherit text color */
+  text-decoration: none; /* Remove underline */
+  padding: 8px 15px; /* Add padding to create a button shape */
+  border-radius: 5px; /* Add rounded corners */
+  background-color: transparent; /* Initially transparent background */
+  border: 1px solid transparent; /* Initially transparent border */
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+footer .contact a:hover {
+  background-color: #a887c4; /* Background color on hover */
+  border-color: #a887c4; /* Border color on hover */
+  color: #fff; /* White text on hover */
+}
   
   footer .copyright {
-    margin: 20px 0;
+    text-align: center;
+    margin: 30px 0;
   }
   
   /* -------------------- Mobile Styles - Homepage -------------------- */
@@ -303,46 +332,10 @@ header nav a:hover {
   margin-bottom: 10px; /* Add some space between text and image */
 }
   
-  /* Features */
-  
-  .features {
-    background-image: url('../img/Shadows.jpg');
-    background-size: cover;
-    background-position: top center; /* Align to top center */
-    display: flex;
-    justify-content: center;
-  }
-  
-  .features h2 {
-    margin-bottom: 60px;
-  }
-  
-  .features article {
-    width: 63%;
-    margin: 30px 0;
-  }
-  
-  .features .features-items {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-flow: row wrap;
-  }
-  
-  .features i {
-    font-size: 3.75em;
-    margin-bottom: 40px;
-  }
-  
-  .features p {
-    text-align: center;
-    margin: 0;
-  }
-  
   /* Reviews */
   
   .reviews {
-    background-color: #2a423a;
+    background-color: #d4bbdd;
     display: flex;
     justify-content: center;
   }
@@ -350,6 +343,7 @@ header nav a:hover {
   .reviews h2 {
     margin-bottom: 40px;
     line-height: 1;
+    text-align: center;
   }
   
   .reviews h3 {
@@ -359,7 +353,7 @@ header nav a:hover {
   
 
   /* ==========================================================================
-     About Page
+     Reception Page
      ========================================================================== */
   
   .mission {
@@ -393,7 +387,350 @@ header nav a:hover {
   .contact-content p {
     margin: 0;
   }
-  
+
+/* Countdown section styles */
+
+.countdown-section {
+  padding: 60px 30px; /* Adjust padding as needed for text readability */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Keep width for content centering */
+  max-width: none;
+  margin: 0;
+  background-image: url('../img/invites.png'); /* Set your image path here */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  background-attachment: scroll;
+  background-repeat: no-repeat; /* Prevent tiling */
+  min-height: 400px;
+  color: #fff; /* Change text color to white for better contrast on a dark background */
+}
+
+.countdown-section .content-wrapper {
+    width: 100%; /* Allow content-wrapper to fill the section */
+    max-width: 700px; /* Limit text content width */
+    margin: 0 auto; /* Center the content within the full-width section */
+    padding: 0 10px;
+}
+.countdown-header {
+  text-align: center; /* Center text within the header */
+  margin-bottom: 20px; /* Space between header and countdown */
+}
+
+.countdown-section h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 3em; /* Adjust size as needed */
+  margin-top: 0; /* Remove default top margin from the h2 */
+  margin-bottom: 15px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.countdown-section .wedding-date {
+  font-size: 2em;
+  color: #555;
+  margin-bottom: 30px;
+  font-family: 'EB Garamond', serif;
+  white-space: nowrap;
+}
+
+#countdown {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.time-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.time-segment span {
+  font-size: 3.5em; /* Bigger numbers */
+  font-weight: bold;
+  color: #f8f8ff; /* Light text on dark */
+  font-family: 'EB Garamond', serif;
+  background-color: #333; /* Dark background */
+  padding: 15px 25px; /* More padding in the blocks */
+  border-radius: 7px; /* Slightly bigger rounded corners */
+}
+
+.time-segment .unit {
+  font-size: 1.2em; /* Bigger units text */
+  color: #ddd; /* Light gray text */
+  margin-top: 8px;
+  font-family: sans-serif;
+}
+
+.reception-cover {
+  background-image: url('../img/reception.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; /* Keep alignment to the top */
+  color: #333;
+  text-align: left;
+  position: relative;
+  padding: 60px;
+}
+
+.reception-cover .cover-content h2 {
+  font-family: 'EB Garamond', serif;
+  margin: 0;
+  color: inherit;
+  font-size: 2.5em; /* Base font size */
+}
+
+/* Gifts Section Styles */
+.gifts-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9; /* Add the background color back to the section */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.gifts-content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gifts-content-wrapper h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.gifts-content-wrapper p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  text-align: center;
+}
+
+.gifts-content-wrapper a {
+  color: inherit; /* Inherit the color from the parent paragraph */
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #a887c4; /* Light gray button background */
+  border: 1px solid #a887c4; /* Light gray button border */
+  font-size: inherit;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.gifts-content-wrapper a:hover {
+  background-color: #a887c4; /* Purple color on hover */
+  color: #fff;
+  padding: 7px 12px;
+  border-color: #a887c4;
+}
+
+/* Style the "wedding registry" link specifically (second paragraph) */
+.gifts-content-wrapper p:last-child a {
+  color: inherit; /* Inherit color */
+}
+
+.gifts-content-wrapper p:last-child a:hover {
+  background-color: #a887c4; /* Purple background on hover */
+  color: #fff;
+  padding: 5px 10px; /* Smaller padding for hover */
+  border-radius: 5px;
+}
+
+/* Style the "RSVP" link (first paragraph) */
+.gifts-content-wrapper p:first-child a {
+  color: inherit; /* Inherit color */
+}
+
+.gifts-content-wrapper p:first-child a:hover {
+  background-color: #a887c4; /* Purple background on hover */
+  color: #fff;
+  padding: 5px 10px; /* Smaller padding for hover */
+  border-radius: 5px;
+}
+
+
+/* Responsive adjustments */
+
+/* Adjust styles for tablet and smaller screens (max-width: 1199px) */
+@media only screen and (max-width: 1199px) {
+  .reception-cover {
+    padding: 20px; /* Reduce padding on smaller screens */
+    min-height: 40vh; /* Adjust minimum height */
+    align-items: flex-start; /* Ensure it's aligned to the top */
+  }
+
+  .reception-cover .cover-content h2 {
+    font-size: 1.5em; /* Smaller heading for smaller screens */
+  }
+}
+
+/* Adjust font size for desktop and larger screens */
+@media only screen and (min-width: 1200px) {
+  .reception-cover {
+    min-height: 60vh;
+    padding: 60px;
+  }
+  .reception-cover .cover-content h2 {
+    font-size: 4em; /* Larger font size for desktops */
+  }
+}
+
+/* Adjust font size for tablet and larger screens */
+@media only screen and (min-width: 768px) {
+  .reception-cover .cover-content h2 {
+    font-size: 1.5em; /* Larger font size for tablets */
+  }
+}
+
+/* Adjust font size for desktop and larger screens */
+@media only screen and (min-width: 1200px) {
+  .reception-cover .cover-content h2 {
+    font-size: 3em; /* Even larger font size for desktops */
+  }
+}
+
+/* Adjust height for larger screens */
+@media only screen and (min-width: 768px) {
+  .reception-cover {
+    min-height: 450px;
+  }
+}
+
+/* Adjust height for desktop screens and larger */
+@media only screen and (min-width: 1200px) {
+  .reception-cover {
+    min-height: 900px; /* Increase further for even larger screens */
+  }
+}
+/* Responsive adjustments for smaller screens (you might need to tweak these) */
+@media (max-width: 768px) {
+  .countdown-section {
+    padding: 40px 15px; /* Adjust padding for smaller screens */
+    min-height: 350px; /* Adjust minimum height */
+    margin-bottom: 0;
+  }
+
+  .countdown-section .content-wrapper {
+    max-width: 95%; /* Allow content wrapper to take more width */
+  }
+
+  .countdown-section h2 {
+    font-size: 3.5em; /* Smaller h2 for tablets */
+    white-space: normal; /* Allow "Countdown Calendar" to wrap */
+  }
+
+  .countdown-section .wedding-date {
+    font-size: 1.8em; /* Smaller date for tablets */
+  }
+
+  #countdown {
+    max-width: 95%; /* Allow countdown numbers to take more width */
+    gap: 10px; /* Reduce gap */
+  }
+  .time-segment span {
+    font-size: 2.5em; /* Adjust number size */
+    padding: 10px 15px;
+  }
+  .time-segment .unit {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-section {
+    padding: 30px 10px; /* Further reduce padding */
+    min-height: 300px; /* Further reduce minimum height */
+  }
+
+  .countdown-section h2 {
+    font-size: 2.5em; /* Even smaller h2 for mobile */
+  }
+
+  .countdown-section .wedding-date {
+    font-size: 1.4em; /* Even smaller date for mobile */
+  }
+
+  .time-segment span {
+    font-size: 2em; /* Smallest number size */
+    padding: 8px 12px;
+  }
+  .time-segment .unit {
+    font-size: 0.8em;
+  }
+}
+
+/* Reception Cover Styles for smaller screens */
+@media (max-width: 600px) {
+  .reception-cover {
+    background-size: contain; /* Show the entire image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-position: center; /* Center the image */
+    min-height: auto; /* Let height be determined by padding */
+    padding-bottom: calc(100% / 1.5); /* Height based on width and aspect ratio */
+    display: flex; /* Keep flex for text positioning */
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 768px) {
+  .gifts-section {
+    padding: 60px 40px;
+  }
+
+  .gifts-content-wrapper h2 {
+    font-size: 3em;
+  }
+
+  .gifts-content-wrapper p {
+    font-size: 1.125em;
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gifts-section {
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  .gifts-content-wrapper {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-left: -10px; /* Nudge it 10px to the left - adjust as needed */
+  }
+
+  .gifts-content-wrapper h2 {
+    font-size: 2em;
+  }
+
+  .gifts-content-wrapper p {
+    font-size: 0.9em;
+    max-width: 95%;
+  }
+}
   /* ==========================================================================
      FAQ Page
      ========================================================================== */
@@ -572,24 +909,6 @@ header nav a:hover {
       text-align: center;
     }
   
-    /* Features */
-
-
-    .features h2 {
-      margin-bottom: 20px;
-    }
-  
-    .features article {
-      display: flex;
-      align-items: center;
-      flex-flow: column wrap;
-      flex-basis: 50%;
-    }
-  
-    .features .features-item-description {
-      width: 62%;
-    }
-  
     /* Reviews */
     .reviews article {
       display: flex;
@@ -638,9 +957,9 @@ header nav a:hover {
     footer .copyright {
       width: 100%;
     }
-  
+  }
     /* ==========================================================================
-     About Page
+     Reception Page
      ========================================================================== */
   
     .mission-content {
@@ -692,7 +1011,6 @@ header nav a:hover {
       font-size: .875em;
       line-height: 1.125;
     }
-  }
   
   @media only screen and (min-width:1200px) {
     /*Desktop styles here*/
@@ -726,17 +1044,7 @@ header nav a:hover {
       font-size: 3.75em;
       width: 80%;
     }
-  
-    /* Features */
-  
-  
-    .features h2 {
-      width: 90%;
-    }
-  
-    .features article {
-      flex-basis: 33%;
-    }
+
   
     /* Reviews */
   
