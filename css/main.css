@@ -83,17 +83,6 @@
   }
   
   /* ==========================================================================
-     Browser Upgrade Prompt
-     ========================================================================== */
-  
-  .browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-  }
-  
-  /* ==========================================================================
      Author's custom styles
      ========================================================================== */
   
@@ -119,7 +108,6 @@
 
   a {
     color: #e2e3ed;
-    text-decoration: none;
     font-family: 'EB Garamond', serif; /* Using EB Garamond for links */
   }
 
@@ -162,32 +150,37 @@
     width: 90%;
   }
   /* -------------------- Base Header - Footer Styles -------------------- */
+  /* Hamburger Menu Icon */
+
 header {
   display: flex;
   justify-content: center;
   background-color: #d4bbdd;
   padding-top: 20px; /* Add some top padding for spacing */
   padding-bottom: 20px; /* Add some bottom padding for spacing */
+  position: relative; /* Needed for absolute positioning of nav on mobile */
+  z-index: 100; /* Ensure header is above main content */
 }
 
 header .content-wrapper {
-  margin: 0 auto; /* Center the content wrapper horizontally */
+  margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Stack the title and navigation vertically */
+  flex-direction: column; /* Default to column for mobile */
   align-items: center; /* Center items horizontally within the wrapper */
-  width: 80%; /* Adjust width as needed */
+  width: 80%;
+  position: relative; /* To contain the absolute menu-toggle */
 }
 
 .site-title {
-  width: 100%; /* Make the title take full width of the wrapper */
-  text-align: center; /* Center the text */
-  margin-bottom: 10px; /* Add some space below the title */
-  font-size: 3em; /* Adjust the font size as needed */
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 3em;
 }
 
 .site-title a {
-  text-decoration: none; /* Remove the underline from the link */
-  color: inherit; /* Inherit the color from the parent */
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .header-divider {
@@ -197,107 +190,195 @@ header .content-wrapper {
   margin: 10px 0 20px 0;
 }
 
+/* Hamburger Menu Icon - Mobile Specific */
+.menu-toggle {
+  display: flex; /* Display on mobile */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1000;
+  position: absolute; /* Position it relative to content-wrapper */
+  right: 0; /* Align to the right edge of content-wrapper */
+  top: 25px; /* Adjust based on your header's total padding/height to align vertically */
+  /* Remove transform: translateY(-50%) if top: 25px works better for alignment */
+}
+
+.menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Styles for when the menu is open (for animation later) */
+.menu-toggle.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-active .bar:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.menu-toggle.is-active .bar:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Mobile Navigation adjustments */
 header nav {
-  width: 100%; /* Make the navigation take full width */
-  font-size: 1.125em;
-  font-weight: 700;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
+  display: none; /* Hide navigation by default on mobile */
+  flex-direction: column;
+  width: 100%;
+  position: absolute; /* Position it for full-screen overlay */
+  top: 90px; /* Adjust based on your header height to start below the fixed header */
+  left: 0;
+  background-color: #d4bbdd;
+  padding: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+header nav.active {
+  display: flex; /* Show navigation when active */
 }
 
 header nav ul {
-  display: flex;
-  justify-content: center; /* Center the navigation items */
-  align-items: center;
-  padding: 0; /* Remove default padding for the ul */
-  margin: 0; /* Remove default margin for the ul */
-  width: auto;
+  flex-direction: column; /* Stack list items vertically */
+  text-align: center;
+  width: 100%;
 }
 
 header nav ul li {
-  display: inline; /* Display list items horizontally */
-  margin: 0 15px; /* Add horizontal spacing between items */
+  margin: 15px 0; /* Add vertical spacing */
 }
 
 header nav a {
   color: #000000;
   text-decoration: none;
-  font-size: inherit; /* Inherit font size from the nav */
-  font-weight: inherit;
-  text-transform: inherit;
-  padding: 5px 10px;
+  font-size: 1.5em; /* Larger font size for mobile links */
+  padding: 10px 0;
+  display: block; /* Make the whole link area clickable */
 }
 
 header nav a:hover {
   color: #fff;
 }
-  
-  footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #f8f8f8;
-  }
-  
-  footer p {
-    margin: 0;
-  }
-  
-  footer .content-wrapper {
-    width: 55%;
-  }
 
-  footer .content-wrapper .footer-content {
+.our-story {
+  background-color: #d4bbdd;
   display: flex;
-  justify-content: center; /* Center the direct children horizontally */
-  align-items: center; /* Vertically align items if needed */
-  flex-direction: column; /* Stack the contact and (if it existed) social divs */
-  text-align: center; /* Center text within the children */
+  justify-content: center;
+}
+
+.our-story article {
+  display: flex;              /* Make it a flex container */
+  flex-direction: column;     /* CRITICAL: Stack children vertically on mobile */
+  align-items: center;        /* Center image and text block horizontally on mobile */
+  text-align: center;         /* Center any inline text that isn't block */
+}
+
+/* Ensure figure and div take full width when stacked */
+.our-story article figure,
+.our-story article div {
+  width: 100%; /* Take full width when stacked */
+  margin: 0; /* Remove any default margins that might cause issues */
+  padding: 0;
+}
+
+/* Add some vertical spacing between image and text on mobile */
+.our-story article figure {
+  margin-bottom: 20px; /* Space below the image on mobile */
+}
+
+/* Ensure h3 and p inside the div are also centered if you want that */
+.our-story article div h3,
+.our-story article div p {
+  text-align: center; /* Center the text on mobile */
+  margin: 10px 0; /* Adjust vertical spacing */
+}
+
+.our-story h2 {
+  margin-bottom: 40px;
+  line-height: 1;
+  text-align: center;
+}
+
+.our-story h3 {
+  width: 55%; /* Re-evaluate this width if it causes issues on mobile */
+  margin: 20px 0;
+  font-size: 1.5em;
+}
+  
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #c0b5b5;
+  padding-top: 60px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer .content-wrapper {
+  width: 55%;
+}
+
+footer .content-wrapper .footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 footer .contact {
-  /* Remove width and margin auto that we previously set */
-  margin-bottom: 30px; /* Keep the bottom margin */
+  margin-bottom: 30px;
 }
 
 footer .contact h4 {
-  text-align: center; /* Center the text within the heading */
-  display: block; /* Ensure it's a block-level element */
-  width: fit-content; /* Make the width fit its content */
-  max-width: 100%; /* Prevent it from becoming wider than its container */
-  margin: 0 auto 10px auto; /* Center the heading horizontally and add bottom margin */
+  text-align: center;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 10px auto;
+  font-size: 1.5em;
 }
 
 footer .contact p {
-  text-align: center; /* Center the text within the paragraph */
-  display: block; /* Ensure it's a block-level element */
-  max-width: 600px; /* Limit the width for readability */
-  margin: 0 auto 20px auto; /* Center the paragraph horizontally and add bottom margin */
+  text-align: center;
+  display: block;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
 }
   
 footer .contact a {
-  color: inherit; /* Inherit text color */
-  text-decoration: none; /* Remove underline */
-  padding: 8px 15px; /* Add padding to create a button shape */
-  border-radius: 5px; /* Add rounded corners */
-  background-color: transparent; /* Initially transparent background */
-  border: 1px solid transparent; /* Initially transparent border */
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  color: #555; /* Text color for the email link */
+  text-decoration: none;
+  padding: 5px 10px; /* Base padding */
+  border-radius: 5px;
+  background-color: #a887c4; /* Highlight color */
+  border: 1px solid #a887c4; /* Border color */
+  font-family: 'Open Sans', sans-serif; /* Set to Open Sans */
+  font-weight: bold; /* Set to bold */
+  white-space: nowrap;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, padding 0.3s ease; /* Add padding to transition */
 }
 
 footer .contact a:hover {
-  background-color: #a887c4; /* Background color on hover */
-  border-color: #a887c4; /* Border color on hover */
-  color: #fff; /* White text on hover */
+  background-color: #a887c4; /* Keep the same background on hover */
+  border-color: #a887c4; /* Keep the same border on hover */
+  color: #fff; /* Make text lighter (white) on hover */
+  padding: 7px 12px; /* Make the button 'grow' on hover */
 }
   
-  footer .copyright {
-    text-align: center;
-    margin: 30px 0;
-  }
-  
+footer .copyright {
+  text-align: center;
+  margin: 30px 0;
+}
   /* -------------------- Mobile Styles - Homepage -------------------- */
   
   /* Hero Area */
@@ -355,38 +436,6 @@ footer .contact a:hover {
   /* ==========================================================================
      Reception Page
      ========================================================================== */
-  
-  .mission {
-    background-color: #527158;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .map figure {
-    width: 100%;
-    height: 0;
-    padding-bottom: 125%;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .map iframe {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .contact-section {
-    background-color: #2a423a;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .contact-content p {
-    margin: 0;
-  }
 
 /* Countdown section styles */
 
@@ -550,9 +599,9 @@ footer .contact a:hover {
 }
 
 .gifts-content-wrapper p:last-child a:hover {
-  background-color: #a887c4; /* Purple background on hover */
-  color: #fff;
-  padding: 5px 10px; /* Smaller padding for hover */
+  background-color: #a887c4; /* Keep purple background on hover */
+  color: #fff; /* Make text lighter (white) on hover */
+  padding: 7px 12px; /* Make the button 'grow' on hover, matching RSVP */
   border-radius: 5px;
 }
 
@@ -595,12 +644,66 @@ footer .contact a:hover {
   }
 }
 
+  p {
+    font-size: 1.125em; /* This should make paragraphs 18px on desktop */
+    line-height: 1.333;
+  }
+
+    header {
+    padding: 15px 0;
+  }
+
 /* Adjust font size for tablet and larger screens */
 @media only screen and (min-width: 768px) {
   .reception-cover .cover-content h2 {
     font-size: 1.5em; /* Larger font size for tablets */
   }
+
+  .our-story {
+    display: flex;
+    justify-content: center;
+    background-color: #d4bbdd; /* Your existing background color */
+    padding-top: 80px;    /* ADD THIS LINE */
+    padding-bottom: 80px; /* ADD THIS LINE */
+  }
+
+.our-story article {
+  flex-direction: row; /* Override to row for tablet and up */
+  justify-content: center; /* Center the two columns */
+  align-items: flex-start;
+  gap: 40px; /* Specific gap for tablet */
+  text-align: left; /* Align text within the div to the left */
 }
+
+.our-story article figure,
+.our-story article div {
+  width: calc(50% - 20px); /* Adjust width for gap on tablet */
+}
+
+.our-story article figure {
+  margin-bottom: 0; /* Remove mobile margin when side-by-side */
+}
+
+  .our-story h2 {
+    width: 100%; /* Ensure h2 takes full width of content-wrapper */
+    text-align: center; /* Center the text */
+    margin-bottom: 40px; /* Keep consistent with global h2 if desired */
+  }
+
+.our-story article div h3,
+.our-story article div p {
+  text-align: left; /* Align text to left when side-by-side */
+}
+}
+
+  .our-story article figure img {
+    width: 100%; /* Make the image fill the figure's 49% width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any inline-block spacing issues */
+    /* Optional: If the image seems to have weird empty space or crops unexpectedly, try object-fit */
+    /* object-fit: cover; */ /* Fills the container, potentially cropping */
+    /* object-position: center; */ /* Centers the image within the 'cover' area */
+  }
 
 /* Adjust font size for desktop and larger screens */
 @media only screen and (min-width: 1200px) {
@@ -608,6 +711,23 @@ footer .contact a:hover {
     font-size: 3em; /* Even larger font size for desktops */
   }
 }
+
+  .our-story {
+    padding-top: 100px;    /* ADD THIS LINE (can be slightly larger for desktop) */
+    padding-bottom: 100px; /* ADD THIS LINE */
+  }
+
+  .our-story article {
+    display: flex; /* Keep it flex */
+    align-items: flex-start;
+    gap: 60px;
+    justify-content: center;
+  }
+
+  .our-story article figure,
+  .our-story article div {
+    width: calc(50% - 30px); 
+  }
 
 /* Adjust height for larger screens */
 @media only screen and (min-width: 768px) {
@@ -655,6 +775,47 @@ footer .contact a:hover {
     font-size: 1em;
   }
 }
+@media only screen and (max-width: 767px) {
+  /* 1. Make the image larger by widening its container within the section */
+  .our-story .content-wrapper {
+    width: 100%;       /* Make it 100% of the .our-story section's width */
+    max-width: none;   /* Override any global max-width restriction for mobile */
+    padding: 0;        /* Remove internal padding on content-wrapper */
+  }
+
+  /* Adjust the .our-story article (the flex container for image/text) */
+  .our-story article {
+    width: 100%;       /* Ensure the article takes full width of its parent */
+    padding: 0 15px;   /* Add internal padding for content spacing from screen edges */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    /* align-items: center; is already present in your default styles,
+       which correctly centers the figure and div blocks in the column. */
+  }
+
+  /* Image (now larger by filling wider containers) and its centering */
+  .our-story article figure {
+    width: 100%;       /* Ensure the figure takes full width of the article */
+    margin: 0 auto 20px auto; /* Ensure the figure block is horizontally centered */
+    /* The image itself (img tag) has max-width: 100% globally, so it will fill this width. */
+  }
+
+  /* 2. Text underneath: justified and centered in the column */
+  .our-story article div {
+    width: 100%;      /* Ensure the text content div takes full width of the article */
+    margin: 0 auto;   /* Explicitly center this text block horizontally */
+    padding: 0 15px;  /* Add padding ONLY to the text content itself for readability */
+    box-sizing: border-box; /* Crucial for padding within 100% width */
+  }
+
+  .our-story article div p {
+    text-align: justify; /* Justify the paragraph text */
+  }
+
+  /* h3 styling (explicitly ensure it's centered if needed, as you removed no-wrap) */
+  .our-story article div h3 {
+    text-align: center; /* Ensure heading is centered */
+  }
+}
 
 @media (max-width: 480px) {
   .countdown-section {
@@ -676,6 +837,9 @@ footer .contact a:hover {
   }
   .time-segment .unit {
     font-size: 0.8em;
+  }
+    .our-story article div h3 {
+    white-space: nowrap;      /* Forces the heading onto a single line */
   }
 }
 
@@ -731,36 +895,139 @@ footer .contact a:hover {
     max-width: 95%;
   }
 }
-  /* ==========================================================================
-     FAQ Page
-     ========================================================================== */
-  
-  .faq {
-    background-color: #527158;
+
+@media only screen and (min-width:768px) {
+  /*Tablet styles here*/
+
+  /* General styles - Revert to original desktop styles as much as possible */
+  .content-wrapper {
+    max-width: 640px; /* Your existing tablet max-width */
+    margin: 0 auto; /* Center the content wrapper on the page */
+    flex-direction: column; /* Keep stacked for title above nav */
+    align-items: center; /* Center items within the content wrapper */
+    width: 100%; /* Allow content wrapper to take full width up to max-width */
+  }
+
+  /* Header - Reverting to original layout */
+  header {
+    padding: 33px 0; /* Original padding */
+  }
+
+  header .content-wrapper {
+    width: 100%;
+    /* Change these two lines: */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;   /* Center items horizontally */
+    padding: 0; /* Remove mobile padding if not already */
+  }
+
+  .site-title {
+    font-size: 2.5em; /* Your existing tablet site title font size */
+    width: 100%; /* Ensure it spans the full width of content-wrapper */
+    text-align: center; /* Center the text */
+    margin: 0 auto 20px auto; /* Center the block and add bottom margin */
+  }
+
+  .header-divider {
+    display: block; /* Show the divider */
+    width: 80%; /* Adjust width of the divider */
+    max-width: 400px; /* Optional: limit divider width */
+    margin: 10px auto 20px auto; /* Center it and add vertical spacing */
+  }
+
+  header nav {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    width: 100%; /* Allow nav to take full width of wrapper to center content */
+    font-size: 1.125em;
+    font-weight: 700;
+    text-transform: uppercase;
+    justify-content: center; /* Center the nav items */
+    padding: 0;
+    align-items: center;
   }
-  
-  .faq .content-wrapper {
+
+  header nav ul {
+    /* Original desktop nav ul styles */
     display: flex;
+    flex-direction: row;
+    justify-content: center; /* Original desktop justification */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    flex-wrap: nowrap;
+  }
+
+  header nav ul li {
+    /* Original desktop nav li styles */
+    white-space: nowrap;
+    margin: 0 18px;
+  }
+
+  header nav a {
+    /* Original desktop nav a styles */
+    color: #000000; /* Original desktop color */
+    text-decoration: none;
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: inherit;
+    padding: 5px 10px;
+  }
+
+  header nav a:hover {
+    color: #fff;
+  }
+
+  .menu-toggle {
+    display: none; /* Hide hamburger on tablet/desktop */
+  }
+}
+
+@media only screen and (min-width:1200px) {
+  /*Desktop styles here*/
+
+  /* General styles */
+ .content-wrapper {
+    max-width: 960px; /* Your existing desktop max-width */
+    margin: 0 auto; /* Center the content wrapper on the page */
+  }
+
+  /* Header - Fine-tuning for larger desktop screens */
+  header {
+    padding: 15px 0; /* Original desktop header padding */
+  }
+
+    header nav {
+    /* Ensure consistency for desktop */
+    flex-direction: row;
+    justify-content: center; /* Center the nav content */
+  }
+
+  header nav ul {
+    /* Apply similar rules for desktop to prevent wrapping */
     justify-content: center;
-    align-items: flex-start;
-    flex-flow: row wrap;
-    margin: 50px 0 0 0;
+    flex-direction: row;
+    flex-wrap: nowrap; /* PREVENT WRAPPING */
+    margin: 0; /* Reset margins */
+    padding: 0; /* Reset padding */
   }
-  
-  .faq h2 {
-    margin-bottom: 40px;
-    line-height: 1;
+
+  header nav ul li {
+    margin: 0 25px; /* Increase spacing slightly for larger screens */
   }
-  
-  .faq-content {
-    margin-bottom: 50px;
+
+  /* Ensure site-title is still centered for larger screens */
+  .site-title {
+    font-size: 3em; /* Your existing desktop site title font size */
+    width: 100%; /* Ensure it spans the full width of content-wrapper */
+    text-align: center; /* Center the text */
+    margin: 0 auto; /* Center the block and remove any extra margin */
   }
-  
-  .faq-content h4 {
-    line-height: 1.333;
-  }
+}
   
   /* ==========================================================================
      Helper classes
@@ -844,254 +1111,7 @@ footer .contact a:hover {
   .clearfix:after {
     clear: both;
   }
-  
-  /* ==========================================================================
-     EXAMPLE Media Queries for Responsive Design.
-     These examples override the primary ('mobile first') styles.
-     Modify as content requires.
-     ========================================================================== */
-  
-  @media only screen and (min-width:768px) {
-    /*Tablet styles here*/
-  
-    /* General styles */
-    .content-wrapper {
-      max-width: 640px;
-      margin: 100px 0;
-    }
-  
-    h2 {
-      font-size: 2.25em;
-      line-height: 1.333;
-    }
-  
-    h3 {
-      font-size: 1.5em;
-      line-height: 1.25;
-    }
-  
-    /* Header */
-    header {
-      padding: 33px 0;
-    }
-  
-    header .content-wrapper {
-      width: 100%;
-      justify-content: space-between;
-    }
-  
-    header figure {
-      width: 30%;
-    }
-  
-    header nav {
-      width: 20%;
-    }
-  
-    header nav ul {
-      justify-content: space-between;
-    }
-  
-    .header-divider {
-      display: none;
-    }
-  
-    /* Hero Area */
-  
-    .hero-area {
-      min-height: 600px;
-    }
-  
-    .hero-area h1 {
-      font-size: 3em;
-      line-height: 1;
-      margin: 0;
-      text-align: center;
-    }
-  
-    /* Reviews */
-    .reviews article {
-      display: flex;
-      justify-content: space-between;
-    }
-  
-    .reviews h2 {
-      width: 85%;
-    }
-  
-    .reviews article figure,
-    .reviews article div {
-      width: 49%;
-    }
-  
-    .reviews h3 {
-      width: 75%;
-      margin: 0;
-    }
-  
-    /* Footer */
-    footer .content-wrapper {
-      width: 65%;
-    }
-  
-    footer .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row;
-    }
-  
-    footer .contact {
-      margin-bottom: 0;
-    }
-  
-    footer h4 {
-      font-size: 1.5em;
-      margin-bottom: 40px;
-    }
-  
-    footer p {
-      line-height: 1.285;
-    }
-  
-    footer .copyright {
-      width: 100%;
-    }
-  }
-    /* ==========================================================================
-     Reception Page
-     ========================================================================== */
-  
-    .mission-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding-top: 20px;
-    }
-  
-    .mission-content p {
-      width: 45%;
-    }
-  
-    .map figure {
-      padding-bottom: 45.5%;
-    }
-  
-    .contact-section .content-wrapper h2 {
-      width: 80%;
-    }
-  
-    .contact-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-  
-    .contact-content h4 {
-      font-size: 1.5em;
-    }
-  
-    /* ==========================================================================
-     FAQ Page
-     ========================================================================== */
-    .faq .content-wrapper {
-      justify-content: space-between;
-    }
-  
-    .faq-content {
-      flex-basis: 45%;
-    }
-  
-    .faq h2 {
-      width: 100%;
-    }
-  
-    .faq h4,
-    .faq p {
-      font-size: .875em;
-      line-height: 1.125;
-    }
-  
-  @media only screen and (min-width:1200px) {
-    /*Desktop styles here*/
-  
-    /* General styles */
-    .content-wrapper {
-      max-width: 960px;
-    }
-  
-    /* Header */
-    header {
-      padding: 15px 0;
-    }
-  
-    h2 {
-      font-size: 2.25em;
-    }
-  
-    h3,
-    h4 {
-      font-size: 1.875em;
-    }
-  
-    p {
-      font-size: 1.125em;
-      line-height: 1.333;
-    }
-  
-    /* Hero */
-    .hero-area h1 {
-      font-size: 3.75em;
-      width: 80%;
-    }
 
-  
-    /* Reviews */
-  
-    .reviews h2 {
-      padding-bottom: 50px;
-    }
-  
-    .reviews article div {
-      width: 42%;
-    }
-  
-    footer h4 {
-      font-size: 1.875em;
-    }
-  
-    /* ==========================================================================
-    About Page
-    ========================================================================== */
-    .map figure {
-      padding-bottom: 37.5%;
-    }
-  
-    .mission h2,
-    .contact-section .content-wrapper h2 {
-      width: 95%;
-      font-size: 3em;
-    }
-  
-    .contact-content h4 {
-      font-size: 1.875em;
-    }
-  
-    /* ==========================================================================
-    FAQ Page
-    ========================================================================== */
-    .faq h2 {
-      width: 100%;
-      font-size: 3em;
-    }
-  
-    .faq h4,
-    .faq p {
-      font-size: 1.125em;
-      line-height: 1;
-    }
-  }
-  
   /* ==========================================================================
      Print styles.
      Inlined to avoid the additional HTTP request:
