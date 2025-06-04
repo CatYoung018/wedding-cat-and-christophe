@@ -146,6 +146,34 @@ const countdownInterval = setInterval(updateCountdown, 1000);
       });
     });
   </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+  </script>
+
+  <button id="scrollToTopBtn" title="Go to top">Top</button>
+    <script>
+    // Get the button element
+    let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // When the user scrolls down 200px from the top of the document, show the button
+    // (Adjust '200' to control when the button appears)
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollToTopBtn.style.display = "block";
+        scrollToTopBtn.style.opacity = "0.8"; // Ensure initial opacity when shown
+      } else {
+        scrollToTopBtn.style.display = "none";
+      }
+    };
+
+    // When the user clicks on the button, scroll smoothly to the top of the document
+    scrollToTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Provides a smooth scrolling animation
+      });
+    });
+  </script>
+  
 </body>
 
 </html>

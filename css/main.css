@@ -381,6 +381,32 @@ footer .copyright {
   margin: 30px auto;
   width: 100%;
 }
+#scrollToTopBtn {
+  display: none; /* Hidden by default, JavaScript will show/hide it */
+  position: fixed; /* Stays in the same position on the screen */
+  bottom: 30px; /* Distance from the bottom of the viewport */
+  right: 30px; /* Distance from the right of the viewport */
+  z-index: 99; /* Ensures it appears above other content */
+  font-family: 'Open Sans', sans-serif; /* Use your body font */
+  font-size: 18px; /* Text size */
+  font-weight: bold; /* Make text bold */
+  border: none; /* Remove default button border */
+  outline: none; /* Remove outline on focus */
+  background-color: #a887c4; /* Your purple highlight color */
+  color: white; /* White text for contrast */
+  cursor: pointer; /* Changes cursor to a pointer on hover */
+  padding: 15px; /* Padding inside the button */
+  border-radius: 50%; /* Makes the button round */
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition for hover effects */
+  opacity: 0.8; /* Slightly transparent when not hovered for subtlety */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+#scrollToTopBtn:hover {
+  background-color: #8c6fa6; /* Darker purple on hover */
+  opacity: 1; /* Fully opaque on hover */
+}
+
   /* -------------------- Mobile Styles - Homepage -------------------- */
   
   /* Hero Area */
@@ -901,6 +927,12 @@ footer .copyright {
     display: flex; /* Keep flex for text positioning */
     justify-content: flex-start;
     align-items: flex-start;
+  }
+    #scrollToTopBtn {
+    font-size: 16px;
+    padding: 12px;
+    bottom: 20px;
+    right: 20px;
   }
 }
 
