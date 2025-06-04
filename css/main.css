@@ -174,7 +174,7 @@ header .content-wrapper {
 .site-title {
   width: 100%;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   font-size: 3em;
 }
 
@@ -200,7 +200,7 @@ header .content-wrapper {
   cursor: pointer;
   z-index: 1000;
   position: absolute; /* Position it relative to content-wrapper */
-  right: 0; /* Align to the right edge of content-wrapper */
+  right: 20px; /* Align to the right edge of content-wrapper */
   top: 25px; /* Adjust based on your header's total padding/height to align vertically */
   /* Remove transform: translateY(-50%) if top: 25px works better for alignment */
 }
@@ -225,7 +225,6 @@ header .content-wrapper {
   transform: translateY(-11px) rotate(-45deg);
 }
 
-/* Mobile Navigation adjustments */
 header nav {
   display: none; /* Hide navigation by default on mobile */
   flex-direction: column;
@@ -336,7 +335,9 @@ footer .content-wrapper .footer-content {
 }
 
 footer .contact {
-  margin-bottom: 30px;
+  margin: 0 auto 30px auto;
+  max-width: 100%;
+
 }
 
 footer .contact h4 {
@@ -377,7 +378,8 @@ footer .contact a:hover {
   
 footer .copyright {
   text-align: center;
-  margin: 30px 0;
+  margin: 30px auto;
+  width: 100%;
 }
   /* -------------------- Mobile Styles - Homepage -------------------- */
   
@@ -655,6 +657,21 @@ footer .copyright {
 
 /* Adjust font size for tablet and larger screens */
 @media only screen and (min-width: 768px) {
+
+    .site-title {
+    font-size: 2.5em; /* Keep existing font size */
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 40px auto;
+    padding: 20px; 
+  }
+
+    header .content-wrapper {
+    max-width: 640px; /* Match the global .content-wrapper max-width for tablet */
+    width: 100%;      /* Ensure it takes full width up to max-width */
+    margin: 0 auto;   /* Explicitly center this content wrapper */
+  }
+
   .reception-cover .cover-content h2 {
     font-size: 1.5em; /* Larger font size for tablets */
   }
@@ -694,7 +711,7 @@ footer .copyright {
 .our-story article div p {
   text-align: left; /* Align text to left when side-by-side */
 }
-}
+
 
   .our-story article figure img {
     width: 100%; /* Make the image fill the figure's 49% width */
@@ -704,13 +721,19 @@ footer .copyright {
     /* object-fit: cover; */ /* Fills the container, potentially cropping */
     /* object-position: center; */ /* Centers the image within the 'cover' area */
   }
-
+}
 /* Adjust font size for desktop and larger screens */
 @media only screen and (min-width: 1200px) {
   .reception-cover .cover-content h2 {
     font-size: 3em; /* Even larger font size for desktops */
   }
 }
+
+  header .content-wrapper {
+    max-width: 960px; /* Match the global .content-wrapper max-width for desktop */
+    width: 100%;      /* Ensure it takes full width up to max-width */
+    margin: 0 auto;   /* Explicitly center this content wrapper */
+  }
 
   .our-story {
     padding-top: 100px;    /* ADD THIS LINE (can be slightly larger for desktop) */
@@ -776,6 +799,30 @@ footer .copyright {
   }
 }
 @media only screen and (max-width: 767px) {
+
+    /* 1. Make the footer's content wrapper wider for better spacing on mobile */
+  footer .content-wrapper {
+    width: 100%;       /* Make it span the full width of the footer */
+    padding: 0 15px;   /* Add consistent side padding (like in our-story section) */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+
+  /* 2. Ensure the paragraph containing the email link is properly centered */
+  footer .contact p {
+    text-align: center; /* Ensures the inline-block link is centered within the paragraph */
+    margin: 0 auto 20px auto; /* Explicitly centers the paragraph block itself */
+    max-width: 100%; /* Ensures the paragraph respects its container's width */
+  }
+
+  /* 3. Adjust the email link (button) itself for centering and overflow handling */
+  footer .contact a {
+    display: inline-block; /* Treat the link as an inline-block element for centering */
+    white-space: nowrap;   /* Keep the email on one line (as you preferred previously) */
+    overflow: hidden;      /* Hide any text that overflows */
+    text-overflow: ellipsis; /* Add "..." if text is cut off */
+    max-width: 100%;       /* IMPORTANT: Ensures the link button doesn't exceed its parent's width */
+  }
+
   /* 1. Make the image larger by widening its container within the section */
   .our-story .content-wrapper {
     width: 100%;       /* Make it 100% of the .our-story section's width */
